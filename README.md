@@ -22,7 +22,9 @@ import { getConfigStore, getConfigCli, cacHelpWithConfigCli, ParamsDescription }
 
 const cliName = 'you-cli';
 const defaultConfigStore = {
-  cwd: './',
+  config: {
+    cwd: './',
+  },
 };
 const paramsDescription: ParamsDescription = [
   { key: 'cwd'; value: string; description: string; },
