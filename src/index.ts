@@ -90,7 +90,20 @@ npm2cjs config reset`,
   return configCli;
 };
 
+const cacHelpWithConfigCli = (cliName: string) => (sections: { title?: string; body: string; }[]) => {
+  const Commands = sections.find(section => section.title === 'Commands');
+  const ForMoreInfo = sections.find(section => section.title?.includes('For more info'));
+  if (Commands) {
+    Commands.body += '\n  config  修改全局配置项';
+  }
+  if (ForMoreInfo) {
+    ForMoreInfo.body += `\n  $ ${cliName} config --help`;
+  }
+  return sections;
+};
+
 export {
   getConfigStore,
   getConfigCli,
+  cacHelpWithConfigCli,
 };

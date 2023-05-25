@@ -1,6 +1,6 @@
 {
   "name": "config-cli-helper",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "config-cli-helper",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",

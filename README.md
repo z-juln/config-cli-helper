@@ -4,10 +4,10 @@ Helper for quickly writing commands such as `npm config ls`„ÄÅ `npm config get`„
 
 cmd list:
 - `you-cli config -h`
-- `you-cli config ls`
-- `you-cli config get`
-- `you-cli config set`
-- `you-cli config set`
+- `you-cli config set <key>=<value> [<key>=<value> ...]`
+- `you-cli config get [<key> [<key> ...]]`
+- `you-cli config del <key> [<key> ...]`
+- `you-cli config ls [--json]`
 - `you-cli config reset`
 
 ## install
@@ -17,7 +17,8 @@ cmd list:
 ## use
 
 ```typescript
-import { getConfigStore, getConfigCli, ParamsDescription } from 'config-cli-helper';
+import cac from 'cac';
+import { getConfigStore, getConfigCli, cacHelpWithConfigCli, ParamsDescription } from 'config-cli-helper';
 
 const cliName = 'you-cli';
 const defaultConfigStore = {
@@ -42,6 +43,9 @@ if (process.argv[2] === 'config') {
 console.log('config: ', configStore.get('config')); // { cwd: './' }
 
 // Other cmd. For example, this cmd: `you-cli -h`
-// ...
+const cli = cac(cliName);
+cli.help(
+  cacHelpWithConfigCli(cliName)
+);
 
 ```
